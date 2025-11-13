@@ -42,7 +42,23 @@ Edit `.env` and set:
 - `ANDROID_IP`: Your Android device IP (you'll get this from the IP Webcam app)
 - `OBS_PASSWORD`: Your OBS WebSocket password
 
-### 6. Setup IP Webcam on Android
+### 6. Install the `webcam` Command (Optional)
+For easier access, install the launcher script globally:
+```bash
+chmod +x webcam
+mkdir -p ~/.local/bin
+ln -sf "$(pwd)/webcam" ~/.local/bin/webcam
+```
+
+Add `~/.local/bin` to your PATH if not already present:
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Now you can run `webcam` from anywhere!
+
+### 7. Setup IP Webcam on Android
 1. Install "IP Webcam" app from Google Play Store
 2. Open the app and scroll down to "Start server"
 3. Note the IP address shown (e.g., `192.168.1.100:8080`)
@@ -51,14 +67,22 @@ Edit `.env` and set:
 
 **Important:** Make sure OBS Studio is running before starting the script!
 
-### Option 1: Using .env file (Recommended)
+### Quick Start (if you installed the command)
+
+```bash
+webcam
+```
+
+### Using Python directly
+
+#### Option 1: Using .env file (Recommended)
 
 Once you've configured your `.env` file, simply run:
 ```bash
 python3 ip_webcam_virtual.py
 ```
 
-### Option 2: Using command-line arguments
+#### Option 2: Using command-line arguments
 
 ```bash
 python3 ip_webcam_virtual.py <IP_ADDRESS>
